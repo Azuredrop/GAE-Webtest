@@ -5,11 +5,23 @@ app.config['DEBUG'] = True
 # Note: We don't need to call run() since our application is embedded within
 # the App Engine WSGI application server.
 
+form = """
+<form action="/testform">
+    <input name="q">
+    <input type="submit">
+</form>
+"""
+
 
 @app.route('/')
 def hello():
     """Return a friendly HTTP greeting."""
-    return 'Hello World!'
+    return form
+
+
+@app.route('/testform')
+def helloform():
+    return "This is test form"
 
 
 @app.errorhandler(404)
